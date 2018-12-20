@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using CollegeService.Entities;
+using CollegeService.Models;
 using CollegeService.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -31,17 +32,17 @@ namespace CollegeService.Controllers
         }
 
         // POST api/<controller>
-        [HttpPost("{id}/CreateStudent")]
-        public void Post([FromBody]Student student)
+        [HttpPost("CreateStudent")]
+        public bool Post([FromBody]StudentDto student)
         {
-            _provider.Add(student);
+            return _provider.Add(student);
         }
         
         // PUT api/<controller>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]Student student)
+        public bool Put(int id, [FromBody]Student student)
         {
-            _provider.Update(student);
+            return _provider.Update(student);
         }
 
         // DELETE api/<controller>/5

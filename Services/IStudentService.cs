@@ -11,7 +11,7 @@ namespace CollegeService.Services
     {
         IEnumerable<Student> GetAll();
         Student Get(int id);
-        bool Add(Student student);
+        bool Add(StudentDto student);
         bool Update(Student student);
         bool Remove(int id);
 

@@ -21,10 +21,23 @@ namespace CollegeService.Services
           return  _context.Students.FirstOrDefault(s => s.Id == id);
         }
 
-        public bool Add(Student student)
+        public bool Add(StudentDto student)
         {
-             if(_context.Students.Add(student)!=null) return true;
-            return false;
+
+            if (student.Id != 0)
+            {
+                _context.Students.Add(new Student()
+                {
+
+                    Name = student.Name,
+                    DepartmentId = student.Department,
+
+                });
+               
+
+            }
+            return _context.SaveChanges() >= 1;
+
         }
 
         public bool Update(Student student)
